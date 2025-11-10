@@ -1,0 +1,102 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .filter-btn {
+      margin: 5px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .filter-btn:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+  </style>
+</head>
+<body class="dashboard-page">
+  <div class="container">
+    <h1>Notifications Dashboard</h1>
+
+    <!-- FILTER BUTTONS -->
+    <div class="button-group">
+      <button class="filter-btn" onclick="filterNotifications('all')">All</button>
+      <button class="filter-btn" onclick="filterNotifications('upcoming')">Upcoming</button>
+      <button class="filter-btn" onclick="filterNotifications('current')">Current</button>
+      <button class="filter-btn" onclick="filterNotifications('previous')">Previous</button>
+    </div>
+
+    <!-- NOTIFICATION TABLE -->
+    <table id="notificationTable">
+      <thead>
+        <tr>
+          <th>Notification No</th>
+          <th>Description</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for n in notifications %}
+        <tr data-start="{{ n['start_datetime'] }}" data-end="{{ n['end_datetime'] }}">
+          <td>{{ n['notification_number'] }}</td>
+          <td>{{ n['description'] }}</td>
+          <td>{{ n['start_datetime'] }}</td>
+          <td>{{ n['end_datetime'] }}</td>
+          <td><a href="/notification/{{ n['notification_number'] }}">View</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JS FILTER SCRIPT -->
+  <script>
+    function filterNotifications(type) {
+      const rows = document.querySelectorAll('#notificationTable tbody tr');
+      const now = new Date();
+
+      rows.forEach(row => {
+        const start = new Date(row.getAttribute('data-start'));
+        const end = new Date(row.getAttribute('data-end'));
+        let show = true;
+
+        if (type === 'upcoming') {
+          show = start > now;
+        } else if (type === 'current') {
+          show = start <= now && now <= end;
+        } else if (type === 'previous') {
+          show = end < now;
+        }
+
+        row.style.display = (type === 'all' || show) ? '' : 'none';
+      });
+    }
+
+    // Show "Current" notifications by default
+    window.onload = function () {
+      filterNotifications('current');
+    };
+  </script>
+</body>
+</html>

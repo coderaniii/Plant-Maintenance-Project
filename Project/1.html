@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance App Screens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #374151;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #4f46e5;
+            color: white;
+            padding: 16px 24px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .screen-section {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .screen-section:last-child {
+            border-bottom: none;
+        }
+        .card {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        .label {
+            font-weight: 500;
+            color: #4b5563;
+        }
+        .value {
+            color: #1f2937;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .status-created { background-color: #bfdbfe; color: #1e40af; } /* blue-200, blue-800 */
+        .status-inprogress { background-color: #fde68a; color: #b45309; } /* yellow-200, amber-800 */
+        .status-completed { background-color: #d1fae5; color: #065f46; } /* green-200, emerald-800 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            Notification Screen
+        </div>
+        <div class="screen-section">
+            <h2 class="text-xl font-semibold mb-4 text-gray-800">Recent Issues</h2>
+
+            <div class="card">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="text-lg font-bold text-indigo-700">#NOT-2025-001</div>
+                    <div class="text-sm font-semibold text-red-600 bg-red-100 px-3 py-1 rounded-full">Critical</div>
+                </div>
+                <p class="text-gray-700 mb-2">Description: Motor overheating in Production Line A.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <div><span class="label">Damage Code:</span> <span class="value">MTR-OVH-001</span></div>
+                    <div><span class="label">Estimated Time:</span> <span class="value">4 hours</span></div>
+                    <div><span class="label">Functional Location:</span> <span class="value">PL-A-ASSY-01</span></div>
+                    <div><span class="label">Equipment:</span> <span class="value">Motor-XYZ-789</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="text-lg font-bold text-indigo-700">#NOT-2025-002</div>
+                    <div class="text-sm font-semibold text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full">Medium</div>
+                </div>
+                <p class="text-gray-700 mb-2">Description: Conveyor belt misalignment in Packaging Area.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <div><span class="label">Damage Code:</span> <span class="value">CVY-MIS-002</span></div>
+                    <div><span class="label">Estimated Time:</span> <span class="value">2 hours</span></div>
+                    <div><span class="label">Functional Location:</span> <span class="value">PKG-AREA-03</span></div>
+                    <div><span class="label">Equipment:</span> <span class="value">Conveyor-B-456</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="text-lg font-bold text-indigo-700">#NOT-2025-003</div>
+                    <div class="text-sm font-semibold text-green-600 bg-green-100 px-3 py-1 rounded-full">Low</div>
+                </div>
+                <p class="text-gray-700 mb-2">Description: Minor oil leak from Hydraulic Press 5.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <div><span class="label">Damage Code:</span> <span class="value">HYD-LEAK-003</span></div>
+                    <div><span class="label">Estimated Time:</span> <span class="value">1 hour</span></div>
+                    <div><span class="label">Functional Location:</span> <span class="value">MACH-SHOP-02</span></div>
+                    <div><span class="label">Equipment:</span> <span class="value">HydraulicPress-05</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2v4m-3 0h7" />
+            </svg>
+            Work Order Screen
+        </div>
+        <div class="screen-section">
+            <h2 class="text-xl font-semibold mb-4 text-gray-800">Work Order Details: #WO-2025-001</h2>
+
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-2xl font-bold text-gray-900">Repair Motor Overheat</h3>
+                        <span class="status-badge status-inprogress">In Progress</span>
+                    </div>
+                    <p class="text-gray-600">Description: Investigate and rectify motor overheating issue on Production Line A.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div><span class="label">Work Order Number:</span> <span class="value font-semibold">#WO-2025-001</span></div>
+                    <div><span class="label">Notification Number:</span> <span class="value font-semibold">#NOT-2025-001</span></div>
+                    <div><span class="label">Start Date & Time:</span> <span class="value">2025-05-30 09:00 AM</span></div>
+                    <div><span class="label">End Date & Time:</span> <span class="value">2025-05-30 01:00 PM (Est.)</span></div>
+                    <div><span class="label">Number of People:</span> <span class="value">2</span></div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Operations:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Inspect motor for visible damage.</li>
+                        <li>Check cooling system and ventilation.</li>
+                        <li>Measure motor temperature and current draw.</li>
+                        <li>Replace faulty bearings.</li>
+                        <li>Test run and monitor performance.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">People Assigned:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">John Doe (Mechanic)</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Jane Smith (Electrician)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

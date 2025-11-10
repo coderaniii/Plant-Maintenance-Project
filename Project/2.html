@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Maintenance App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .screen { margin-bottom: 3rem; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; }
+    label { display: block; margin-top: 1rem; }
+    input, select, textarea { width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid #ccc; border-radius: 5px; }
+    button { margin-top: 1.5rem; padding: 0.7rem 1.2rem; border: none; background: #007BFF; color: #fff; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h2>Notification Screen</h2>
+    <label>Notification Number: <input type="text" /></label>
+    <label>Description: <textarea></textarea></label>
+    <label>Damage Code: <input type="text" /></label>
+    <label>Criticality:
+      <select>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+    </label>
+    <label>Estimated Time (hrs): <input type="number" /></label>
+    <label>Functional Location: <input type="text" /></label>
+    <label>Equipment: <input type="text" /></label>
+    <button>Submit Notification</button>
+  </div>
+
+  <div class="screen">
+    <h2>Work Order Screen</h2>
+    <label>Work Order Number: <input type="text" /></label>
+    <label>Notification Number: <input type="text" /></label>
+    <label>Description: <textarea></textarea></label>
+    <label>Status:
+      <select>
+        <option value="created">Created</option>
+        <option value="inprogress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </label>
+    <label>Number of People: <input type="number" /></label>
+    <label>People Assigned: <input type="text" /></label>
+    <label>Operations: <textarea></textarea></label>
+    <label>Start Date and Time: <input type="datetime-local" /></label>
+    <label>End Date and Time: <input type="datetime-local" /></label>
+    <button>Submit Work Order</button>
+  </div>
+</body>
+</html>

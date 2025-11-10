@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Work Order</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+  <div class="container">
+    <h2>Create Work Order</h2>
+    <form id="workOrderForm">
+      <label>Work Order Number:</label>
+      <input type="text" name="work_order_number" required>
+
+      <label>Notification Number:</label>
+      <input type="text" name="notification_number" required>
+
+      <label>Description:</label>
+      <textarea name="description" rows="3" required></textarea>
+
+      <label>Status:</label>
+      <select name="status" required>
+        <option value="Created">Created</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+
+      <label>Start Date & Time:</label>
+      <input type="datetime-local" name="start_datetime" required>
+
+      <label>End Date & Time:</label>
+      <input type="datetime-local" name="end_datetime" required>
+
+      <label>Number of People:</label>
+      <input type="number" name="people_count" required>
+
+      <label>People Assigned (comma-separated):</label>
+      <input type="text" name="people_assigned" required>
+
+      <label>Operations:</label>
+      <textarea name="operations" rows="2" required></textarea>
+
+      <button type="submit">Submit Work Order</button>
+    </form>
+    <div id="result" style="margin-top: 20px; color: green;"></div>
+    <a href="dashboard.html" class="dash-btn" style="margin-top: 20px;">⬅ Back to Dashboard</a>
+  </div>
+
+  <script>
+    document.getElementById('workOrderForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      const response = await fetch('/submit-workorder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.text();
+      document.getElementById('result').innerText = result;
+      this.reset();
+    });
+  </script>
+</body>
+</html>
